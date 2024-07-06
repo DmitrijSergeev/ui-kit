@@ -1,32 +1,28 @@
-import type { ComponentPropsWithoutRef, ElementType } from "react";
+import type { ComponentPropsWithoutRef, ElementType } from 'react'
 
-import s from "./button.module.scss";
-import clsx from "clsx";
+import clsx from 'clsx'
 
-export type ButtonProps<T extends ElementType = "button"> = {
-  variant?: "primary" | "secondary" | "outlined";
-  fullWidth?: boolean;
-  as?: T;
-} & ComponentPropsWithoutRef<T>;
+import s from './button.module.scss'
 
-export function Button<T extends ElementType = "button">({
-  className,
-  variant = "primary",
-  fullWidth = false,
+export type ButtonProps<T extends ElementType = 'button'> = {
+  as?: T
+  fullWidth?: boolean
+  variant?: 'outlined' | 'primary' | 'secondary'
+} & ComponentPropsWithoutRef<T>
+
+export function Button<T extends ElementType = 'button'>({
   as,
+  className,
+  fullWidth = false,
+  variant = 'primary',
   ...rest
 }: ButtonProps<T>) {
-  const Component = as ?? "button";
+  const Component = as ?? 'button'
 
   return (
     <Component
       {...rest}
-      className={clsx(
-        s.button,
-        s[variant],
-        fullWidth && s.fullWidth,
-        className,
-      )}
+      className={clsx(s.button, s[variant], fullWidth && s.fullWidth, className)}
     />
-  );
+  )
 }
