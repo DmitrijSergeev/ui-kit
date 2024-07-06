@@ -1,8 +1,11 @@
 import type { ComponentPropsWithoutRef } from 'react'
 
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/700.css'
+
 import { Button } from './button'
 
-export const Main = () => {
+export const Test = () => {
   return (
     <div>
       <Button as={MyLink} target={'_blank'} to={'https://google.com'}>
