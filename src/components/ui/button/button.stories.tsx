@@ -1,6 +1,5 @@
 import { type Meta } from '@storybook/react'
-
-import { Button } from './button'
+import { Button } from 'src/components/ui/button/button'
 
 const meta = {
   component: Button,

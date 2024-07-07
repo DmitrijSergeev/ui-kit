@@ -1,9 +1,9 @@
 import type { ComponentPropsWithoutRef } from 'react'
 
+import { Button } from '@/components/ui/button/button'
+
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/700.css'
-
-import { Button } from './button'
 
 export const Test = () => {
   return (
