@@ -13,12 +13,21 @@ export default meta
 export const Default = {
   args: {
     children: 'Default button',
+    disabled: false,
+  },
+}
+export const Secondary = {
+  args: {
+    children: 'Secondary button',
+    disabled: false,
+    variant: 'secondary',
   },
 }
 
 export const AlertOnClick = {
   args: {
     children: 'Alert!',
+    disabled: false,
     onClick: () => alert('Button clicked'),
   },
 }
