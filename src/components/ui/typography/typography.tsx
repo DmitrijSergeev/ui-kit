@@ -8,24 +8,24 @@ export type TypographyProps<T extends ElementType> = {
   children: ReactNode
   className?: string
   variant?:
-    | 'body1'
-    | 'body2'
-    | 'caption'
-    | 'error'
+    | 'Bold_text_16'
+    | 'Medium_text_14'
+    | 'Semi-bold_small_text'
+    | 'bold_text_14'
     | 'h1'
     | 'h2'
     | 'h3'
     | 'large'
-    | 'link1'
-    | 'link2'
-    | 'overline'
-    | 'subtitle1'
-    | 'subtitle2'
+    | 'regular_link'
+    | 'regular_text_14'
+    | 'regular_text_16'
+    | 'small_link'
+    | 'small_text'
 }
 export const Typography = <T extends ElementType = 'p'>({
   as,
   className,
-  variant = 'body1',
+  variant = 'regular_text_16',
   ...rest
 }: Omit<TypographyProps<T>, keyof ComponentPropsWithoutRef<'p'>> & TypographyProps<T>) => {
   const classNames = clsx(s.text, s[variant], className)

@@ -10,3 +10,7 @@
 .large {
   @include typography(var(--font-size-xxl), var(--line-height-l), var(--font-weight-bold));
 }
+
+.h1 {
+  @include typography;
+}
