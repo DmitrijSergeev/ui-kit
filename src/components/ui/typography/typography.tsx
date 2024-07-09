@@ -8,17 +8,17 @@ export type TypographyProps<T extends ElementType> = {
   children: ReactNode
   className?: string
   variant?:
-    | 'Bold_text_16'
-    | 'Medium_text_14'
-    | 'Semi-bold_small_text'
     | 'bold_text_14'
+    | 'bold_text_16'
     | 'h1'
     | 'h2'
     | 'h3'
     | 'large'
+    | 'medium_text_14'
     | 'regular_link'
     | 'regular_text_14'
     | 'regular_text_16'
+    | 'semi_bold_small_text'
     | 'small_link'
     | 'small_text'
 }

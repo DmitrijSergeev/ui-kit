@@ -11,8 +11,5 @@ const meta = {
 export default meta
 
 export const Default = {
-  args: {
-    children: 'Default button',
-    disabled: false,
-  },
+  args: {},
 }

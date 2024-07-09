@@ -7,19 +7,19 @@ const meta = {
     variant: {
       control: { type: 'radio' },
       options: [
-        'large',
+        'bold_text_14',
+        'bold_text_16',
         'h1',
         'h2',
         'h3',
-        'body1',
-        'body2',
-        'subtitle1',
-        'subtitle2',
-        'caption',
-        'overline',
-        'link1',
-        'link2',
-        'error',
+        'large',
+        'medium_text_14',
+        'regular_link',
+        'regular_text_14',
+        'regular_text_16',
+        'semi_bold_small_text',
+        'small_link',
+        'small_text',
       ],
     },
   },
@@ -59,65 +59,64 @@ export const H3: Story = {
   },
 }
 
-export const Body1: Story = {
+export const Regular_text_14: Story = {
   args: {
     children: 'Card content',
     variant: 'regular_text_14',
   },
 }
 
-export const Body2: Story = {
+export const Medium_text_14: Story = {
   args: {
     children: 'Card content',
-    variant: 'Medium_text_14',
+    variant: 'medium_text_14',
   },
 }
 
-export const Subtitle1: Story = {
+export const Small_text: Story = {
   args: {
     children: 'Card content',
     variant: 'small_text',
   },
 }
 
-export const Subtitle2: Story = {
-  args: {
-    children: 'Card content',
-    variant: 'Semi-bold_small_text',
-  },
-}
-
-export const Caption: Story = {
+export const Regular_text_16: Story = {
   args: {
     children: 'Card content',
     variant: 'regular_text_16',
   },
 }
 
-export const Overline: Story = {
+export const Semi_bold_small_text: Story = {
   args: {
     children: 'Card content',
-    variant: 'bold_text_14',
+    variant: 'semi_bold_small_text',
   },
 }
 
-export const Link1: Story = {
+export const Regular_link: Story = {
   args: {
     children: 'Card content',
     variant: 'regular_link',
   },
 }
 
-export const Link2: Story = {
+export const Small_link: Story = {
   args: {
     children: 'Card content',
     variant: 'small_link',
   },
 }
 
-export const Error: Story = {
+export const Bold_text_16: Story = {
   args: {
     children: 'Card content',
-    variant: 'Bold_text_16',
+    variant: 'bold_text_16',
+  },
+}
+export const Bold_text_14: Story = {
+  args: {
+    children: 'Card content',
+    variant: 'bold_text_14',
   },
 }
