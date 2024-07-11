@@ -1,4 +1,4 @@
-import { type Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 import { Button } from './button'
 
@@ -9,14 +9,15 @@ const meta = {
 } satisfies Meta<typeof Button>
 
 export default meta
+type Story = StoryObj<typeof meta>
 
-export const Default = {
+export const Default: Story = {
   args: {
     children: 'Default button',
     disabled: false,
   },
 }
-export const Secondary = {
+export const Secondary: Story = {
   args: {
     children: 'Secondary button',
     disabled: false,
@@ -24,7 +25,7 @@ export const Secondary = {
   },
 }
 
-export const AlertOnClick = {
+export const AlertOnClick: Story = {
   args: {
     children: 'Alert!',
     disabled: false,
@@ -32,7 +33,7 @@ export const AlertOnClick = {
   },
 }
 
-export const ButtonAsLink = {
+export const ButtonAsLink: Story = {
   args: {
     as: 'a',
     children: 'This is a link',
