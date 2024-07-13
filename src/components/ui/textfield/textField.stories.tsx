@@ -11,7 +11,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+  args: {},
+}
 
 export const Disabled: Story = {
   args: {
@@ -20,5 +22,12 @@ export const Disabled: Story = {
     placeholder: 'Disabled ',
     type: 'text',
     value: 'Disabled',
+  },
+}
+export const TypeSearch: Story = {
+  args: {
+    label: 'Search',
+    type: 'search',
+    value: 'Search',
   },
 }
