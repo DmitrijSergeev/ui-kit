@@ -1,40 +1,35 @@
-import {defineConfig} from 'vite'
-import react from '@vitejs/plugin-react'
-import {resolve} from 'path'
-import {dependencies, devDependencies} from './package.json'
-import dts from 'vite-plugin-dts'
+import { join, resolve } from "node:path";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
 
-// https://vitejs.dev/config/
+import { dependencies, devDependencies } from "./package.json";
+
 export default defineConfig({
-    plugins: [react(), dts({rollupTypes: true})],
+    plugins: [
+        react(),
+        dts({ rollupTypes: true }), // Output .d.ts files
+    ],
     build: {
-        target: 'esnext',
+        target: "esnext",
         minify: false,
         lib: {
-            // Could also be a dictionary or array of multiple entry points
-            entry: resolve(__dirname, 'src/index.ts'),
-            // the proper extensions will be added
-            fileName: 'index',
-            formats: ['es', 'cjs']
+            entry: resolve(__dirname, join("src", "index.ts")),
+            fileName: "index",
+            formats: ["es", "cjs"],
         },
         rollupOptions: {
-            // make sure to externalize deps that shouldn't be bundled
-            // into your library
+            // Exclude peer dependencies from the bundle to reduce bundle size
             external: [
-                ...Object.keys(devDependencies),
                 ...Object.keys(dependencies),
-                'react/jsx-runtime'
+                ...Object.keys(devDependencies),
+                "react/jsx-runtime",
             ],
             output: {
-                // Provide global variables to use in the UMD build
-                // for externalized deps
-                globals: {
-                    react: 'React',
-                },
-                dir: 'dist',
-                entryFileNames: '[name].js',
-                format: 'es'
+                dir: "dist",
+                entryFileNames: "[name].cjs",
+                format: "cjs",
             },
         },
     },
-})
+});
