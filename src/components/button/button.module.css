@@ -1,0 +1,11 @@
+.button{
+    all: unset;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: chocolate;
+}
+.button:focus-visible{
+    outline: 2px solid blue;
+}
