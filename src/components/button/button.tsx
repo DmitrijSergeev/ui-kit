@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef } from 'react'
-import s from './button.module.css'
+import s from './button.module.scss'
 
 type Props = ComponentPropsWithoutRef<'button'> & {
   variant?: 'primary' | 'secondary'

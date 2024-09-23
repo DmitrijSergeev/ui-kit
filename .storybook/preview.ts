@@ -1,5 +1,6 @@
-import type { Preview } from "@storybook/react";
-
+import type { Preview } from '@storybook/react'
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/700.css'
 const preview: Preview = {
   parameters: {
     controls: {
@@ -9,6 +10,6 @@ const preview: Preview = {
       },
     },
   },
-};
+}
 
-export default preview;
+export default preview
