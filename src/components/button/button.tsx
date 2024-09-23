@@ -1,13 +1,14 @@
 import { ComponentPropsWithoutRef } from 'react'
 import s from './button.module.scss'
+import clsx from 'clsx'
 
-type Props = ComponentPropsWithoutRef<'button'> & {
+type Props = {
   variant?: 'primary' | 'secondary'
-}
-export const Button = (props: Props) => {
+  fullWidth?: boolean
+} & ComponentPropsWithoutRef<'button'>
+
+export const Button = ({ variant = 'primary', className, fullWidth, ...rest }: Props) => {
   return (
-    <button {...props} className={s.button}>
-      Hello World!!!
-    </button>
+    <button className={clsx(s.button, s[variant], fullWidth && s.fullWidth, className)} {...rest} />
   )
 }
