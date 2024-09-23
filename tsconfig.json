@@ -48,7 +48,7 @@
     "isolatedModules": true,
 
     // Allow importing TypeScript modules.
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false,
 
     // Enfore "type" modifier for type imports.
     "verbatimModuleSyntax": false,
@@ -65,7 +65,10 @@
     "noPropertyAccessFromIndexSignature": false,
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": false,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "exclude": ["./src/**/*.stories.*"]
