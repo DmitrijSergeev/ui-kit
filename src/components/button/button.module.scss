@@ -7,15 +7,18 @@
   align-items: center;
 
   box-sizing: border-box;
+  padding: 0.5rem 1rem;
 
-  background-color: chocolate;
+  border: 2px solid black;
+  border-radius: 0.25rem;
 
-  .button:focus-visible {
+  &:focus-visible {
     outline: 2px solid var(--color-info-500);
   }
 }
 
 .primary {
+  composes: button;
   background-color: var(--color-accent-500);
 }
 
