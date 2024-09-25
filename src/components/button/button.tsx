@@ -3,7 +3,7 @@ import s from './button.module.scss'
 import clsx from 'clsx'
 
 type Props = {
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'asLink'
   fullWidth?: boolean
 } & ComponentPropsWithoutRef<'button'>
 
