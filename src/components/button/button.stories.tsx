@@ -30,3 +30,19 @@ export const Fullwidth: Story = {
     fullWidth: true,
   },
 }
+export const AsLink: Story = {
+  args: {
+    variant: 'asLink',
+    children: 'asLink',
+  },
+  render: args => {
+    return (
+      <Button {...args}>
+        {' '}
+        <a href={'https://www.google.com/'} target={'_blank'}>
+          Go to Google
+        </a>
+      </Button>
+    )
+  },
+}

@@ -1,213 +1,107 @@
-import {
-  ChangeEvent,
-  ComponentProps,
-  forwardRef,
-  useState,
-  FocusEvent,
-  KeyboardEvent,
-  ReactElement,
-} from 'react'
-import { clsx } from 'clsx'
+import { ChangeEvent, ComponentPropsWithoutRef, KeyboardEvent, forwardRef, useState } from 'react'
+
+import clsx from 'clsx'
 
 import s from './TextField.module.scss'
-import { ButtonProps, IconButton } from '../Buttons/IconButton'
-import { useId } from '@/shared/hooks/useId.ts'
-import { IconProps } from '@/shared/ui/IconComponents/IconWrapper/IconWrapper.tsx'
-import IcSearch from '../../assets/icons/components/IcSearch'
-import { IcClear } from '@/shared/ui/IconComponents/IcClear/IcClear.tsx'
-import { IcOpenEye } from '@/shared/ui/IconComponents/IcOpenEye/IcOpenEye.tsx'
-import { IcCloseEye } from '@/shared/ui/IconComponents/IcCloseEye/IcCloseEye.tsx'
+import Search from '@/assets/icons/components/search'
+import Eye from '@/assets/icons/components/eye'
+import EyeOff from '@/assets/icons/components/eye-off'
 
-export type BaseTextFieldProps = {
-  defaultValue?: readonly string[] | string | undefined
-  disabled?: boolean
-  error?: boolean | null | string
-  fullwidth?: boolean
-  id?: string
+export type TextFieldProps = {
+  classNameInput?: string
+  error?: string
   label?: string
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void
-  onChangeText?: (value: string) => void
-  onClickSearch?: () => void
-  onEnter?: () => void
-  placeholder?: string
-  textFieldClassName?: string
-  triggerEnd?: ReactElement<ButtonProps | IconProps>
-  type?: 'password' | 'search' | 'text'
-} & Omit<ComponentProps<'input'>, 'type'>
+  onValueChange?: (value: string) => void
+  type?: 'email' | 'password' | 'search'
+} & Omit<ComponentPropsWithoutRef<'input'>, 'type'>
 
-export const TextField = forwardRef<HTMLInputElement, BaseTextFieldProps>((props, ref) => {
-  const {
-    defaultValue,
-    disabled,
-    error,
-    fullwidth,
-    id,
-    triggerEnd,
-    label,
-    onBlur: customOnBlur,
-    onChange,
-    onChangeText,
-    onClickSearch,
-    onEnter,
-    textFieldClassName,
-    onKeyDown,
-    placeholder,
-    type = 'text',
-    ...respProps
-  } = props
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
+  (
+    {
+      className,
+      classNameInput,
+      disabled,
+      error,
+      id,
+      label,
+      onKeyDown,
+      onValueChange,
+      type = 'text',
+      value,
+      ...props
+    },
+    ref
+  ) => {
+    const [isVisible, setIsVisible] = useState(false)
 
-  const [value, setValue] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
-
-  const showClearButton = value.length > 0
-  const textFieldType = type === 'password' && showPassword ? 'text' : type
-  const textFieldId = useId(id, 'textField')
-
-  const onClickHandleShowPass = () => {
-    setShowPassword(!showPassword)
-  }
-
-  const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e)
-    const newValue = e.currentTarget.value
-
-    onChangeText?.(newValue)
-    setValue(newValue)
-  }
-
-  const onBlurCallback = (e: FocusEvent<HTMLInputElement>) => {
-    customOnBlur && customOnBlur(e)
-  }
-
-  const onKeyPressCallback = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (type === 'password' && e.code === 'Enter' && !showPassword) {
-      e.preventDefault()
-      onEnter && onEnter()
+    const classes = {
+      input: clsx(s.input, s[type], error && s.error, classNameInput),
+      label: clsx(s.label, disabled && s.disabled),
+      textField: clsx(s.textField, className),
     }
-    if (type === 'text') {
-      if (e.code === 'Enter') {
-        onEnter && onEnter()
+
+    const onVisible = () => {
+      setIsVisible(prevState => !prevState)
+    }
+
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+      props.onChange?.(e)
+      onValueChange?.(e.target.value)
+    }
+    const clearFieldHandler = () => {
+      onValueChange?.('')
+    }
+
+    const onKeydownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        e.preventDefault()
+        onKeyDown && onKeyDown(e)
       }
     }
-  }
 
-  const onClickHandlerSearchButton = () => {
-    if (type === 'search' && onClickSearch && !disabled) {
-      onClickSearch()
-    }
-  }
-
-  const onClickClearSearchText = () => {
-    if (!disabled) {
-      setValue('')
-      // Optionally, trigger onChangeText with empty string
-      onChangeText && onChangeText('')
-    }
-  }
-
-  const classNames = {
-    btnClear: clsx(type === 'search' && s.btnClear, label && s.withLabel),
-    btnSearch: clsx(
-      type === 'search' && s.btnSearch,
-      label && s.withLabel,
-      fullwidth && s.btnSearchWithFullWidth
-    ),
-    button: clsx('s.button'),
-    error: clsx(s.error, disabled && s.errorWithDisabled),
-    iconSearch: clsx(s.iconSearch),
-    iconShowPass: clsx('s.iconShowPass'),
-    label: clsx(s.labelText, disabled && s.labelWithDisabled),
-    showPassBtn: clsx(s.showPassBtn),
-    triggerEnd: clsx(s.triggerEnd, label && s.withLabel, fullwidth && s.triggerEndWithFullwidth),
-    showPassword: clsx(s.showPassword, label && s.withLabel, fullwidth && s.showPassWithFullwidth),
-    textField: clsx(
-      s.textField,
-      fullwidth && s.fullwidth,
-      error && s.errorText,
-      type === 'password' && s.withShowPassword,
-      type === 'search' && s.withSearchType,
-      triggerEnd && s.withTriggerEnd,
-      textFieldClassName ? textFieldClassName : ''
-    ),
-    textFieldWrapper: clsx(s.textFieldWrapper, fullwidth && s.fullwidth),
-  }
-
-  /** Если используется defaultValue, то значение управляется извне */
-  const inputValue = defaultValue !== undefined ? defaultValue : value
-
-  return (
-    <div className={classNames.textFieldWrapper}>
-      {type === 'search' && (
-        <>
-          <IconButton
-            className={classNames.btnSearch}
+    return (
+      <div className={classes.textField}>
+        {label && (
+          <label className={classes.label} htmlFor={id}>
+            {label}
+          </label>
+        )}
+        <div className={s.inputWrapper}>
+          <input
+            className={classes.input}
             disabled={disabled}
-            onClick={onClickHandlerSearchButton}
-            variant={'secondary'}
-            type="button"
-          >
-            <IcSearch className={classNames.iconSearch} />
-          </IconButton>
-          {showClearButton && (
-            <IconButton
-              className={classNames.btnClear}
+            id={id}
+            onChange={onChangeHandler}
+            onKeyDown={onKeydownHandler}
+            ref={ref}
+            type={!isVisible ? type : 'text'}
+            value={value}
+            {...props}
+          />
+          {type === 'search' && <Search className={s.searchIcon} />}
+          {type === 'password' &&
+            (isVisible ? (
+              <button className={s.rightBtn} disabled={disabled} onClick={onVisible} type="button">
+                <EyeOff />
+              </button>
+            ) : (
+              <button className={s.rightBtn} disabled={disabled} onClick={onVisible} type="button">
+                <Eye />
+              </button>
+            ))}
+          {type === 'search' && value && (
+            <button
+              className={s.rightBtn}
               disabled={disabled}
-              onClick={onClickClearSearchText}
-              type={'reset'}
-            >
-              <IcClear size={1.3} />
-            </IconButton>
-          )}
-        </>
-      )}
-      {label && (
-        <label className={classNames.label} htmlFor={textFieldId}>
-          {label}
-        </label>
-      )}
-      <input
-        className={classNames.textField}
-        defaultValue={defaultValue}
-        disabled={disabled}
-        id={textFieldId}
-        onBlur={onBlurCallback}
-        onChange={onChangeCallback}
-        onKeyDown={onKeyPressCallback}
-        placeholder={placeholder}
-        ref={ref}
-        type={textFieldType}
-        {...(defaultValue !== undefined ? {} : { value: inputValue })}
-        {...respProps}
-      />
-      {error && (
-        <span className={classNames.error} id={`${textFieldId}-error`}>
-          {error}
-        </span>
-      )}
-      {triggerEnd && <div className={classNames.triggerEnd}>{triggerEnd}</div>}
-      {type === 'password' && (
-        <div className={classNames.showPassword}>
-          {showPassword ? (
-            <IconButton
-              className={classNames.showPassBtn}
-              disabled={disabled}
-              onClick={onClickHandleShowPass}
+              onClick={clearFieldHandler}
               type="button"
             >
-              <IcOpenEye className={classNames.iconShowPass} size={1.3} />
-            </IconButton>
-          ) : (
-            <IconButton
-              className={classNames.showPassBtn}
-              disabled={disabled}
-              onClick={onClickHandleShowPass}
-              type="button"
-            >
-              <IcCloseEye className={classNames.iconShowPass} size={1.3} />
-            </IconButton>
+              <IcClose />
+            </button>
           )}
         </div>
-      )}
-    </div>
-  )
-})
+        {error && <span className={s.errorText}>{error}</span>}
+      </div>
+    )
+  }
+)
