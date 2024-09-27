@@ -3,7 +3,7 @@ import { TextField } from './textField'
 
 const meta = {
   component: TextField,
-  title: 'Components/TextField',
+  title: 'TextField/TexField',
   tags: ['autodocs'],
 } satisfies Meta<typeof TextField>
 
