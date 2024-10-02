@@ -1,5 +1,11 @@
 import React from 'react'
+import s from './textFieldArea.scss'
 
 export const TextFieldArea = () => {
-  return <div></div>
+  return (
+    <div>
+      <label></label>
+      <textarea></textarea>
+    </div>
+  )
 }
