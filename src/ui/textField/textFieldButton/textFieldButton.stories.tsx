@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { TextField } from './textField'
+import { TextFieldButton } from './textFieldButton'
 
 const meta = {
-  component: TextField,
-  title: 'Components/TextField/TexField',
+  component: TextFieldButton,
+  title: 'Components/TextField/TextFieldButton',
   tags: ['autodocs'],
-} satisfies Meta<typeof TextField>
+} satisfies Meta<typeof TextFieldButton>
 
 export default meta
 

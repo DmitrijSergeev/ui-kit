@@ -7,6 +7,7 @@ export type TextAreaProps = {
   error?: string
   label?: string
   resize?: 'both' | 'horizontal' | 'none' | 'vertical'
+  variantScroll?: 'small' | 'medium' // todo: maxRow, types Andrey
 } & ComponentPropsWithoutRef<'textarea'>
 
 export const TextFieldArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
