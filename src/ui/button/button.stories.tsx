@@ -1,5 +1,6 @@
 import { Button } from './button'
 import { Meta, StoryObj } from '@storybook/react'
+import { Eye, EyeOff } from '../../assets/icons/components'
 
 const meta = {
   component: Button,
@@ -23,6 +24,12 @@ export const Secondary: Story = {
     children: 'secondary',
   },
 }
+export const Outline: Story = {
+  args: {
+    children: 'Outline Button',
+    variant: 'outline',
+  },
+}
 export const Fullwidth: Story = {
   args: {
     variant: 'primary',
@@ -32,8 +39,8 @@ export const Fullwidth: Story = {
 }
 export const AsLink: Story = {
   args: {
-    variant: 'asLink',
-    children: 'asLink',
+    children: 'AsLink',
+    variant: 'text',
   },
   render: args => {
     return (
@@ -44,5 +51,19 @@ export const AsLink: Story = {
         </a>
       </Button>
     )
+  },
+}
+export const WithIconEye: Story = {
+  args: {
+    children: 'User',
+    endIcon: <Eye />,
+    variant: 'secondary',
+  },
+}
+export const WithIconEyeOff: Story = {
+  args: {
+    children: 'User',
+    endIcon: <EyeOff />,
+    variant: 'secondary',
   },
 }
