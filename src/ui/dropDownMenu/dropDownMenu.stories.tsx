@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { Table } from './table'
+import { DropDownMenu } from './dropDownMenu'
 
 const meta = {
-  component: Table,
+  component: DropDownMenu,
   title: 'Components/Slider',
   tags: ['autodocs'],
-} satisfies Meta<typeof Table>
+} satisfies Meta<typeof DropDownMenu>
 
 export default meta
 
