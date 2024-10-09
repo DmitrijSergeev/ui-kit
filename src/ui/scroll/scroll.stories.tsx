@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { Input } from './input'
+import { Scroll } from 'src/ui/scroll/scroll'
 
 const meta = {
-  component: Input,
-  title: 'Components/Slider',
+  component: Scroll,
+  title: 'Components/Scroll',
   tags: ['autodocs'],
-} satisfies Meta<typeof Input>
+} satisfies Meta<typeof Scroll>
 
 export default meta
 

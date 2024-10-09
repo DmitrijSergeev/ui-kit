@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { Checkbox } from './checkbox'
+import { Switcher } from './switcher'
 
 const meta = {
-  component: Checkbox,
-  title: 'Components/Scroll',
+  component: Switcher,
+  title: 'Components/Slider',
   tags: ['autodocs'],
-} satisfies Meta<typeof Checkbox>
+} satisfies Meta<typeof Switcher>
 
 export default meta
 
