@@ -4,7 +4,7 @@ import { DropDownMenu } from './dropDownMenu'
 
 const meta = {
   component: DropDownMenu,
-  title: 'Components/Slider',
+  title: 'Components/DropDownMenu',
   tags: ['autodocs'],
 } satisfies Meta<typeof DropDownMenu>
 

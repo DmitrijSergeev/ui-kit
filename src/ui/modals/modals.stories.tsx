@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
   component: Modals,
-  title: 'Components/RadioGroup',
+  title: 'Components/Modals',
   tags: ['autodocs'],
 } satisfies Meta<typeof Modals>
 

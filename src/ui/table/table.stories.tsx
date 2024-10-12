@@ -4,7 +4,7 @@ import { Table } from './table'
 
 const meta = {
   component: Table,
-  title: 'Components/Slider',
+  title: 'Components/Table',
   tags: ['autodocs'],
 } satisfies Meta<typeof Table>
 

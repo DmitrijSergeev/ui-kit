@@ -4,7 +4,7 @@ import { Switcher } from './switcher'
 
 const meta = {
   component: Switcher,
-  title: 'Components/Slider',
+  title: 'Components/Switcher',
   tags: ['autodocs'],
 } satisfies Meta<typeof Switcher>
 
