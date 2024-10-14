@@ -4,18 +4,23 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef, ReactNode } from 'rea
 
 export type TooltipProps = {
   children?: ReactNode
-  content?: string
+  content?: ReactNode
   sideOffset?: number
 } & ComponentPropsWithoutRef<typeof TooltipRadix.Root>
 
-export const Tooltip = forwardRef<ElementRef<typeof TooltipRadix.Trigger>, TooltipProps>(
-  ({ children, content, sideOffset = 5, ...props }) => {
+export const Tooltip = forwardRef<ElementRef<typeof TooltipRadix.Root>, TooltipProps>(
+  ({ children, content, sideOffset = 5, ...props }, ref) => {
     return (
       <TooltipRadix.Provider>
         <TooltipRadix.Root>
           <TooltipRadix.Trigger asChild>{children}</TooltipRadix.Trigger>
           <TooltipRadix.Portal>
-            <TooltipRadix.Content className={styles.content} sideOffset={sideOffset} {...props}>
+            <TooltipRadix.Content
+              className={styles.content}
+              sideOffset={sideOffset}
+              ref={ref}
+              {...props}
+            >
               {content}
               <TooltipRadix.Arrow className={styles.arrow} />
             </TooltipRadix.Content>
