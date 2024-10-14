@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { Card } from './card'
+import { Tooltip } from './tooltip'
 
 const meta = {
-  component: Card,
+  component: Tooltip,
   title: 'Components/Tooltip',
   tags: ['autodocs'],
-} satisfies Meta<typeof Card>
+} satisfies Meta<typeof Tooltip>
 
 export default meta
 

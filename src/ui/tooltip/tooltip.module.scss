@@ -1,0 +1,60 @@
+/* Общие стили для тултипа */
+.content {
+  will-change: transform, opacity;
+  user-select: none;
+
+  z-index: 9999;
+
+  padding: 10px 15px;
+
+  font-size: 15px;
+  line-height: 1;
+
+  border-radius: 4px;
+
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arrow {
+  /* Цвет fill будет задан в темах */
+}
+
+/* Светлая тема */
+[data-theme='light'] .Content {
+  color: #000; /* Черный текст */
+  background-color: #fff; /* Белый фон */
+  box-shadow:
+    rgb(0 0 0 / 20%) 0 10px 38px -10px,
+    rgb(0 0 0 / 20%) 0 10px 20px -15px; /* Тень для светлой темы */
+}
+
+[data-theme='light'] .Arrow {
+  fill: #fff; /* Такой же, как background-color у .Content */
+}
+
+/* Тёмная тема */
+[data-theme='dark'] .Content {
+  color: #fff; /* Белый текст */
+  background-color: #333; /* Темно-серый фон */
+  box-shadow:
+    rgb(0 0 0 / 70%) 0 10px 38px -10px,
+    rgb(0 0 0 / 70%) 0 10px 20px -15px; /* Тень для тёмной темы */
+}
+
+[data-theme='dark'] .Arrow {
+  fill: #333; /* Такой же, как background-color у .Content */
+}
+
+/* Анимации для появления тултипа */
+@keyframes slide-up-and-fade {
+  from {
+    transform: translateY(2px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
