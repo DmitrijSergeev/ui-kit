@@ -1,5 +1,5 @@
 import * as TooltipRadix from '@radix-ui/react-tooltip'
-import styles from './Toolltip.module.scss'
+import s from './tooltip.module.scss'
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, ReactNode } from 'react'
 
 export type TooltipProps = {
@@ -16,13 +16,13 @@ export const Tooltip = forwardRef<ElementRef<typeof TooltipRadix.Root>, TooltipP
           <TooltipRadix.Trigger asChild>{children}</TooltipRadix.Trigger>
           <TooltipRadix.Portal>
             <TooltipRadix.Content
-              className={styles.content}
+              className={s.content}
               sideOffset={sideOffset}
               ref={ref}
               {...props}
             >
               {content}
-              <TooltipRadix.Arrow className={styles.arrow} />
+              <TooltipRadix.Arrow className={s.arrow} />
             </TooltipRadix.Content>
           </TooltipRadix.Portal>
         </TooltipRadix.Root>
