@@ -1,0 +1,37 @@
+
+  .trigger {
+    all: unset;
+    font-family: inherit;
+    background-color: white;
+    padding: 0 20px;
+    height: 45px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    line-height: 1;
+    color: var(--mauve-11);
+    user-select: none;
+    &:first-child {
+      border-top-left-radius: 6px;
+    }
+    &:last-child {
+      border-top-right-radius: 6px;
+    }
+    &:hover {
+      color: var(--violet-11);
+    }
+    &[data-state="active"] {
+      color: var(--violet-11);
+      box-shadow:
+              inset 0 -1px 0 0 currentColor,
+              0 1px 0 0 currentColor;
+    }
+    &:focus {
+      position: relative;
+      box-shadow: 0 0 0 2px black;
+    }
+  }
+
+
