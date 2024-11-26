@@ -12,16 +12,10 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
+export const Contain: Story = {
   args: {
-    variant: 'primary',
-    children: 'primary',
-  },
-}
-export const Secondary: Story = {
-  args: {
-    variant: 'secondary',
-    children: 'secondary',
+    variant: 'contain',
+    children: 'contain',
   },
 }
 export const Outline: Story = {
@@ -32,7 +26,7 @@ export const Outline: Story = {
 }
 export const Fullwidth: Story = {
   args: {
-    variant: 'primary',
+    variant: 'contain',
     children: 'fullwidth',
     fullWidth: true,
   },
@@ -57,13 +51,13 @@ export const WithIconEye: Story = {
   args: {
     children: 'User',
     endIcon: <Eye />,
-    variant: 'secondary',
+    variant: 'contain',
   },
 }
 export const WithIconEyeOff: Story = {
   args: {
     children: 'User',
     endIcon: <EyeOff />,
-    variant: 'secondary',
+    variant: 'contain',
   },
 }

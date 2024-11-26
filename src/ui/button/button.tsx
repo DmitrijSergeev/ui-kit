@@ -5,7 +5,8 @@ import { Slot } from '@radix-ui/react-slot'
 
 export type ButtonProps = {
   asChild?: boolean
-  variant?: 'outline' | 'primary' | 'secondary' | 'text'
+  variant?: 'outline' | 'contain' | 'text'
+  color?: string
   endIcon?: ReactNode
   fullWidth?: boolean
   startIcon?: ReactNode
@@ -13,7 +14,7 @@ export type ButtonProps = {
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { variant = 'primary', asChild, className, fullWidth, children, startIcon, endIcon, ...rest },
+    { variant = 'contain', asChild, className, fullWidth, children, startIcon, endIcon, ...rest },
     ref
   ) => {
     const Comp = asChild ? Slot : 'button'
